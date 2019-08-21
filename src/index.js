@@ -2,16 +2,15 @@ const express = require('express')
 const app = express()
 const PORT = 8080
 const httpsReq = require('./helpers/https-req')
+const path = require('path')
 
+app.use(express.static('/src'));
 
-app.route('/')
-  .get(function (req, res) {
-    res.send('hello world')
-    res.render('./pages/home.html')
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/pages/home.html'))
   })
 
-app.route('/search')
-  .get(function(req, res) {
+app.get('/search', function(req, res) {
     console.log(httpsReq('https://api.yelp.com/v3/businesses/search'))
 })
 
