@@ -4,7 +4,7 @@ const PORT = 8080
 
 app.get('/', function (req, res) {
   res.send('hello world')
-  res.render('./pages/home')
+  res.render('./pages/home.html')
 })
 
 app.listen(PORT, () => {
