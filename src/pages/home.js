@@ -1,10 +1,12 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
-const App = require('./app')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './app'
 
 function App() {
   return (
-      <a href='/search'> Search </a>
+    <>
+      <a href='/search'> Search</a>
+    </>
   )
 }
 
