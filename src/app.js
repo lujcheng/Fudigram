@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 function App() {
   return (
     <>
-      <a href='/search'> Search</a>
+      <a href='/restaurants'> Search</a>
     </>
   )
 }
