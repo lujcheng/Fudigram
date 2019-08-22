@@ -13,12 +13,17 @@ const searchRequest = {
 
 const client = yelp.client(apiKey);
 
-client.search(searchRequest).then(response => {
-  const firstResult = response.jsonBody.businesses[0];
-  const prettyJson = JSON.stringify(firstResult, null, 4);
-  console.log(prettyJson);
-}).catch(e => {
-  console.log(e);
-});
+function search(searchRequest) {
+  client.search(searchRequest).then(response => {
+    const firstResult = response.jsonBody.businesses[0];
+    const prettyJson = JSON.stringify(firstResult, null, 4);
+    console.log(prettyJson);
+    return prettyJson
+  }).catch(e => {
+    console.log(e);
+    return e
+  });
 
-export { client }
+}
+
+export { search }
