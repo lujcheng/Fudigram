@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 
-function apiSearch() {
-  axios.get('https://api.yelp.com/v3/businesses/search').then(res => {
-    console.log(res)
-  }
-}
-
-function YelpSearch() {
+export default function YelpSearch() {
   const [term, setTerm] = useState('')
+
+  const handleOnChange = e => {
+    setTerm(e.target.value)
+  }
+
   return (
     <>
       <p>Search Term: {term}</p>
-      <input type='text' onChange={console.log(this.val)} />
+      <input type='text' name='term' value={term} onChange={handleOnChange} />
     </>
   )
 }
+
