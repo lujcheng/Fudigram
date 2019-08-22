@@ -20,3 +20,5 @@ client.search(searchRequest).then(response => {
 }).catch(e => {
   console.log(e);
 });
+
+export { client }
