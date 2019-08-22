@@ -13,9 +13,8 @@ app.get('/', function (req, res) {
     res.sendFile(HTML_FILE)
   })
 
-app.get('/search', function(req, res) {
-    console.log(('https://api.yelp.com/v3/businesses/search'))
-})
+const searchRouter = require('./routes/restaurants')
+app.use('/restaurants', searchRouter)
 
 
 app.listen(PORT, () => {
