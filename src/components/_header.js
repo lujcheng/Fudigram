@@ -1,6 +1,10 @@
 import React from 'react'
 
 export default function Header() {
+
+  const handleOnClick = (e) => {
+    e.preventDefault()
+  }
   return (
     <>
       <span>
