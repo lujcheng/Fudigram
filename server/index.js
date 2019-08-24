@@ -8,7 +8,8 @@ const PORT = 8080
 const DIST_DIR = path.join(__dirname, '../dist')
 const HTML_FILE = path.join(DIST_DIR, 'index.html')
 
-import models, { connectDb } from '../src/models'
+const models = require('../src/models')
+const connectDb = models.connectDb
 
 connectDb().then(async () => {
   app.listen(process.env.PORT, () =>
