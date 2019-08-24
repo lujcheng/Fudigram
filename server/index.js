@@ -11,11 +11,11 @@ const HTML_FILE = path.join(DIST_DIR, 'index.html')
 const models = require('../src/models')
 const connectDb = models.connectDb
 
-connectDb().then(async () => {
-  app.listen(process.env.PORT, () =>
-    console.log(`Example app listening on port ${process.env.PORT}!`),
-  );
-});
+// connectDb().then(async () => {
+//   app.listen(process.env.PORT, () =>
+//     console.log(`Example app listening on port ${process.env.PORT}!`),
+//   );
+// });
 
 app.use(express.static(DIST_DIR))
 
