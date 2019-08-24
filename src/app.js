@@ -9,7 +9,7 @@ function App() {
  
   return (
     <>
-      <a href='/restaurants'> Search</a>
+      <Header />
       <YelpSearch />
 
     </>
