@@ -1,11 +1,20 @@
 const express = require('express')
 const app = express()
-const PORT = 8080
+
 const path = require('path')
 const React = require('react')
-const { renderToString } = require('react-dom/server')
+
+const PORT = 8080
 const DIST_DIR = path.join(__dirname, '../dist')
 const HTML_FILE = path.join(DIST_DIR, 'index.html')
+
+import models, { connectDb } from '../src/models'
+
+connectDb().then(async () => {
+  app.listen(process.env.PORT, () =>
+    console.log(`Example app listening on port ${process.env.PORT}!`),
+  );
+});
 
 app.use(express.static(DIST_DIR))
 
