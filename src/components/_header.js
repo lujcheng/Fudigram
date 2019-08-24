@@ -14,7 +14,7 @@ export default function Header() {
         <input type='text' placeholder='Search Friends' />
       </span>
       <span>
-        Explore
+        <a href='/explore' onClick={handleOnClick}>Explore</a>
       </span>
       <span>
         <a href='/user/login' onClick={handleOnClick}>Login</a>
