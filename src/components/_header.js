@@ -17,7 +17,7 @@ export default function Header() {
         Explore
       </span>
       <span>
-        Login
+        <a href='/user/login' onClick={handleOnClick}>Login</a>
       </span>
     </>
   )
