@@ -15,5 +15,6 @@ export default function Header() {
       <span>
         Login
       </span>
+    </>
   )
 }
