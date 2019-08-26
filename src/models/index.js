@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const DATABASE_URL = require('../database/mongodb.env')
+require("dotenv").config({ path: __dirname + "/.env" });
 
 const User = require('./user')
 
