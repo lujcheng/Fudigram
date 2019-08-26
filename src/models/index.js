@@ -4,7 +4,7 @@ require("dotenv").config({ path: __dirname + "/.env" });
 const User = require('./user')
 
 const connectDb = () => {
-  return mongoose.connect(process.env.DATABASE_URL)
+  return mongoose.connect('mongodb://localhost:27017/test')
 }
 
 const models = { User }
