@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const DATABASE_URL = require('../database/mongodb.env')
 
 const User = require('./user')
 
