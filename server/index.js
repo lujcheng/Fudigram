@@ -9,14 +9,14 @@ const PORT = 8080
 const DIST_DIR = path.join(__dirname, '../dist')
 const HTML_FILE = path.join(DIST_DIR, 'index.html')
 
-const {models, connectDb} = require('../src/models')
-// const connectDb = models.connectDb
+// const {models, connectDb} = require('../src/models')
+// // const connectDb = models.connectDb
 
-connectDb().then(async () => {
-  app.listen(process.env.PORT, () =>
-    console.log(`Example app listening on port ${process.env.PORT}!`),
-  );
-});
+// connectDb().then(async () => {
+//   app.listen(process.env.PORT, () =>
+//     console.log(`Example app listening on port ${process.env.PORT}!`),
+//   );
+// });
 
 
 app.use(express.static(DIST_DIR))
@@ -25,12 +25,9 @@ app.get('/', function (req, res) {
   res.sendFile(HTML_FILE)
 })
 
-app.post('/users', function (req, res) {
-  models.User.create(req.body).then((user) => {
-    res.send(user)
-  })
+const userRouter = require('./routes/users')
+app.use('/users', userRouter)
 
-}) 
 const searchRouter = require('./routes/restaurants')
 app.use('/restaurants', searchRouter)
 
