@@ -1,3 +1,18 @@
+import React, { useState } from 'react'
+
+export default function UserInput() {
+  const [term, setTerm] = useState('')
+  const [results, setResults] = useState('')
+
+  const handleOnChange = e => {
+    setTerm(e.target.value)
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    setResults(search(searchRequest))
+  }
+
 return (
   <>
     <p>Search Term: {term}</p>

@@ -8,11 +8,12 @@ connectDb().then(async () => {
 });
 
 router.route('/').get((req, res) => {
-  res.send("users!")
+  res.sendFile('../../src/components/user-input.js')
 })
 
 router.route('/').post((req, res) => {
   console.log("new user: ", req.body)
+  res.send(req.body)
   models.User.create(req.body).then((user) => {
     res.send(user)
   })
