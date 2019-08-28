@@ -12,7 +12,7 @@ router.route('/').get((req, res) => {
 })
 
 router.route('/').post((req, res) => {
-  console.log(req.body)
+  console.log("new user: ", req.body)
   models.User.create(req.body).then((user) => {
     res.send(user)
   })
