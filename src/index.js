@@ -9,4 +9,4 @@ render((
     <BrowserRouter>
         <App/>
     </BrowserRouter>
-ReactDOM.render(<BrowserRouter />), document.getElementById('root'));
+), document.getElementById('root'));

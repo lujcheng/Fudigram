@@ -1,19 +1,20 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import axios from 'axios'
-import YelpSearch from './components/yelp-search'
-import Header from './components/_header'
+import { Route, Switch } from 'react-router-dom';
+import 
+// import ReactDOM from 'react-dom'
+// import axios from 'axios'
+// import YelpSearch from './components/yelp-search'
+// import Header from './components/_header'
 
 
-function App() {
- 
-  return (
-    <>
-      <Header />
-      <YelpSearch />
-
-    </>
+const App = () => (
+  <div>
+    <Switch>
+      <Route exact path='/' component={Home}/>
+      <Route path='/list' component={List}/>
+    </Switch>
+  </div>
   )
-}
 
-ReactDOM.render(<App />, document.getElementById('root'))
+
+export default App
