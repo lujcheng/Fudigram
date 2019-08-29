@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Home from './pages/home'
+import { Home, Users } from './pages'
+import Registration from './pages/registration'
 import _header from '../components/_header'
 // import ReactDOM from 'react-dom'
 // import axios from 'axios'
@@ -14,6 +15,8 @@ const App = () => (
     <div>
       <Switch>
         <Route exact path='/' component={Home}/>
+        <Route exact path='/users' component={Users} />
+        <Route path='/registration' component={Registration} />
       </Switch>
     </div>
   </div>

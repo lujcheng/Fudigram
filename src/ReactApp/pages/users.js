@@ -1,12 +1,10 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-function Home() {
+function Users() {
   return (
-    <Switch>
-      <Route path='/:id'/>
-    </Switch>
+    <p>users for now</p>
   )
 }
 
-export default Home
+export {Users}
