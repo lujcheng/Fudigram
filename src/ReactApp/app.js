@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Home from './pages/home'
+import _header from '../components/_header'
 // import ReactDOM from 'react-dom'
 // import axios from 'axios'
 // import YelpSearch from './components/yelp-search'
@@ -9,9 +10,12 @@ import Home from './pages/home'
 
 const App = () => (
   <div>
-    <Switch>
-      <Route exact path='/' component={Home}/>
-    </Switch>
+    <_header />
+    <div>
+      <Switch>
+        <Route exact path='/' component={Home}/>
+      </Switch>
+    </div>
   </div>
   )
 
