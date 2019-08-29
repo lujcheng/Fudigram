@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 const path = require('path')
-const React = require('react')
+
 require("dotenv").config({ path: __dirname + "/.env" });
 
 const PORT = 8080
@@ -15,6 +15,9 @@ app.get('/', function (req, res) {
   res.sendFile(HTML_FILE)
 })
 
+app.get('/registration', function (req, res) {
+  res.sendFile(HTML_FILE)
+})
 const userRouter = require('./routes/users')
 app.use('/users', userRouter)
 
