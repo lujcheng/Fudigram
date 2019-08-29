@@ -2,7 +2,7 @@ const router = require('express').Router()
 const {models, connectDb} = require('../../src/models')
 
 const path = require('path')
-const DIST_DIR = path.join(__dirname, '../dist')
+const DIST_DIR = path.join(__dirname, '../../dist')
 const HTML_FILE = path.join(DIST_DIR, 'index.html')
 
 connectDb().then(async () => {
