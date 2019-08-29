@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function UserInput() {
   const [term, setTerm] = useState('')
-  const [results, setResults] = useState('')
+  const [results, setResults] = useState(0)
 
   const handleOnChange = e => {
     setTerm(e.target.value)
@@ -10,15 +10,17 @@ export default function UserInput() {
 
   const handleSubmit = e => {
     e.preventDefault()
-    setResults(search(searchRequest))
+    setResults(results + 1)
+
   }
 
 return (
   <>
     <p>Search Term: {term}</p>
-    <form>
-      <input type='text' name='term' value={term} onChange={handleOnChange} onSubmit={handleSubmit} />
-      <button type='submit' onClick={handleSubmit}>submit</button>
+    <form action='/registration'>
+      User Name:
+      <input type='text' name='userName'  />
+      <input type='submit' value='Submit'/>
     </form>
     <p>Search results: {results} </p>
 
