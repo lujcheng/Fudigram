@@ -15,9 +15,9 @@ app.get('/', function (req, res) {
   res.sendFile(HTML_FILE)
 })
 
-app.get('/registration', function (req, res) {
-  res.sendFile(HTML_FILE)
-})
+const registrationRouter = require('./routes/registration')
+app.use('/registration', registrationRouter)
+
 const userRouter = require('./routes/users')
 app.use('/users', userRouter)
 
