@@ -17,9 +17,9 @@ export default function UserInput() {
 return (
   <>
     <p>Search Term: {term}</p>
-    <form action='/registration'>
+    <form action='/registration' method='post'>
       User Name:
-      <input type='text' name='userName'  />
+      <input type='text' name='userName' onChange={handleOnChange} />
       <input type='submit' value='Submit'/>
     </form>
     <p>Search results: {results} </p>
