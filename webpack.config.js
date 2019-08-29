@@ -7,7 +7,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
-  entry: "./src/app.js",
+  entry: "./src/ReactApp/app.js",
   output: { // NEW
     path: path.join(__dirname, 'dist'),
     filename: "[name].js"
