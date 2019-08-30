@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { models, connectDb } = require('../../src/models')
+const mongoose = require('mongoose')
 
 
 const path = require('path')
@@ -17,16 +18,12 @@ router.route('/').post((req, res) => {
   let user = new models.User({username: req.body.userName})
   user.save(err => {
     if (err) { 
-      throw err
+      return handleError(err)
     } else {
-      res.send('saved')
+      console.log("saved user")
     }
   })
- 
-  // .then((err, user) => {
-  //   if (err) return handleError(err)
-  //   res.send(user)
-  // })
+
 })
 
 module.exports = router;
