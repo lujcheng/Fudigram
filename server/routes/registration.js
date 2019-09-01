@@ -23,7 +23,6 @@ router.route('/').post((req, res) => {
       console.log("saved user")
     }
   })
-
 })
 
 module.exports = router;
