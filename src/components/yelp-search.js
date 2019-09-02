@@ -19,6 +19,12 @@ const search = (term, location) => {
     console.log(response)
     setResults(response)
   })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  })
 }
 
 export default function YelpSearch() {
