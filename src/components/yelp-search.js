@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-const search = require('../helpers/yelp-search')
+// const search = require('../helpers/yelp-search')
 
 const searchRequest = {
   term:'Four Barrel Coffee',
@@ -19,6 +19,7 @@ const search = (term, location) => {
 export default function YelpSearch() {
   const [term, setTerm] = useState('')
   const [results, setResults] = useState('')
+  const [number, setNumber] = useState(0)
 
   const handleOnChange = e => {
     setTerm(e.target.value)
@@ -26,6 +27,7 @@ export default function YelpSearch() {
 
   const handleSubmit = e => {
     e.preventDefault()
+    setNumber(number + 1)
     setResults(search(searchRequest))
   }
 
@@ -37,7 +39,7 @@ export default function YelpSearch() {
         <input type='text' name='term' value={term} onChange={handleOnChange} onSubmit={handleSubmit} />
         <button type='submit' onClick={handleSubmit}>submit</button>
       </form>
-      <p>Search results: {results} </p>
+      <p>Search results: {number} </p>
 
     </>
   )
