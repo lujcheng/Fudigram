@@ -12,7 +12,8 @@ const search = (term, location) => {
     params: {
       term:'Four Barrel Coffee',
       location: 'san francisco, ca'
-    }
+    },
+    Authorization: 'Bearer N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
   })
 }
 
@@ -28,7 +29,7 @@ export default function YelpSearch() {
   const handleSubmit = e => {
     e.preventDefault()
     setNumber(number + 1)
-    setResults(search(searchRequest))
+    setResults(search())
   }
 
 
@@ -39,7 +40,7 @@ export default function YelpSearch() {
         <input type='text' name='term' value={term} onChange={handleOnChange} onSubmit={handleSubmit} />
         <button type='submit' onClick={handleSubmit}>submit</button>
       </form>
-      <p>Search results: {number} </p>
+      <p>Search results: {number}, {results} </p>
 
     </>
   )
