@@ -7,24 +7,38 @@ const searchRequest = {
   location: 'san francisco, ca'
 };
 
-const search = (term, location) => {
-  axios.get('https://api.yelp.com/v3/businesses/search', {
+const ApiKey = ' N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
+const search = (cb) => {
+  axios.get(`https://api.yelp.com/v3/businesses/search`, {
     params: {
       term:'Four Barrel Coffee',
       location: 'san francisco, ca'
     },
-    Authorization: 'Bearer N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
+      headers: {
+        Host: `api.yelp.com`,
+        Accept: '*/*',
+        Authorization: `Bearer ${ApiKey}`
+      }
+
   })
   .then(function (response) {
     console.log(response)
-    setResults(response)
+    cb(JSON.stringify(response))
   })
   .catch(function (error) {
     console.log(error);
+    cb(JSON.stringify(error))
   })
-  .then(function () {
-    // always executed
-  })
+  // axios.create({
+  //   baseURL: 'https://api.yelp.com/v3/businesses/search',
+  //   transformRequest: [function (data, headers) {
+  //     headers['Authorization'] = auth()
+  //     return JSON.stringify(ApiKey)
+  //   }],
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   }
+  // })
 }
 
 export default function YelpSearch() {
@@ -39,7 +53,7 @@ export default function YelpSearch() {
   const handleSubmit = e => {
     e.preventDefault()
     setNumber(number + 1)
-    setResults(search())
+    search(setResults)
   }
 
 
