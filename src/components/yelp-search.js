@@ -7,6 +7,15 @@ const searchRequest = {
   location: 'san francisco, ca'
 };
 
+const search = (term, location) => {
+  axios.get('https://api.yelp.com/v3/businesses/search', {
+    params: {
+      term:'Four Barrel Coffee',
+      location: 'san francisco, ca'
+    }
+  })
+}
+
 export default function YelpSearch() {
   const [term, setTerm] = useState('')
   const [results, setResults] = useState('')
