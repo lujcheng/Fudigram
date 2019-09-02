@@ -15,6 +15,10 @@ const search = (term, location) => {
     },
     Authorization: 'Bearer N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
   })
+  .then(function (response) {
+    console.log(response)
+    setResults(response)
+  })
 }
 
 export default function YelpSearch() {
