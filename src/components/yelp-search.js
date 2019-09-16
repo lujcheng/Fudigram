@@ -22,10 +22,12 @@ const search = (cb) => {
 
   })
   .then(function (response) {
+    console.log('thennn')
     console.log(response)
     cb(JSON.stringify(response))
   })
   .catch(function (error) {
+    console.log('eerrrrrrrr')
     console.log(error);
     cb(JSON.stringify(error))
   })
