@@ -32,7 +32,7 @@ app.use('/registration', registrationRouter)
 const userRouter = require('./routes/users')
 app.use('/users', userRouter)
 
-const searchRouter = require('./routes/restaurants')
+const searchRouter = require('./routes/yelp')
 app.use('/restaurants', searchRouter)
 
 

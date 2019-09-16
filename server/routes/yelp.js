@@ -25,7 +25,7 @@ function apiSearch(searchRequest) {
 }
 router.route('/').get((req, res) => {
   
-  res.send(apiSearch(searchRequest))
+  res.send('hi')
   })
-  
+
 module.exports = router;
