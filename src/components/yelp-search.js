@@ -11,19 +11,20 @@ const searchRequest = {
 const apiKey = ' N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
 const search = (cb) => {
 
-  axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search`, {
-    params: {
-      // term:'Four Barrel Coffee',
-      location: 'san francisco, ca'
-    },
-      headers: {
-        "accept": "application/json",
-        "x-requested-with": "xmlhttprequest",
-        "Access-Control-Allow-Origin":"*",
-        "Authorization": `Bearer ${apiKey}`
-      }
+  // axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search`, {
+  //   params: {
+  //     // term:'Four Barrel Coffee',
+  //     location: 'san francisco, ca'
+  //   },
+  //     headers: {
+  //       "accept": "application/json",
+  //       "x-requested-with": "xmlhttprequest",
+  //       "Access-Control-Allow-Origin":"*",
+  //       "Authorization": `Bearer ${apiKey}`
+  //     }
 
-  })
+  // })
+  axios.get('/restaurants')
   .then((response) => {
     console.log('thennn')
     console.log(response)
