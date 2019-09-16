@@ -28,7 +28,7 @@ const search = (cb) => {
   .then((response) => {
     console.log('thennn')
     console.log("this is the axios response", response)
-    cb(JSON.stringify(response))
+    cb(JSON.stringify(response.data))
   })
   .catch((error) => {
     console.log('eerrrrrrrr')
