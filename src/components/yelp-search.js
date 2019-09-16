@@ -27,12 +27,12 @@ const search = (cb) => {
   axios.get('/restaurants')
   .then((response) => {
     console.log('thennn')
-    console.log(response)
+    console.log("this is the axios response", response)
     cb(JSON.stringify(response))
   })
   .catch((error) => {
     console.log('eerrrrrrrr')
-    console.log(error);
+    console.log("this is axios erroR", error);
     cb(JSON.stringify(error))
   })
 

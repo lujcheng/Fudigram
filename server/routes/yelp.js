@@ -10,22 +10,17 @@ const searchRequest = {
   location: 'san francisco, ca'
 };
 
-
-function apiSearch(searchRequest) {
+router.route('/').get((req, res) => {
   client.search(searchRequest).then(response => {
     const firstResult = response.jsonBody.businesses[0];
     const prettyJson = JSON.stringify(firstResult, null, 4);
-    console.log(prettyJson);
-    return prettyJson
+    console.log("this is server search", prettyJson);
+    res.send(prettyJson)
   }).catch(e => {
     console.log(e);
-    return e
+    res.send("couldn't find it")
   });
-  
-}
-router.route('/').get((req, res) => {
-  
-  res.send('hi')
-  })
 
+})
+  
 module.exports = router;
