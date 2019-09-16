@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import jsonp from 'jsonp'
+// import jsonAdapter from 'axios-jsonp'
 // const search = require('../helpers/yelp-search')
 
 const searchRequest = {
@@ -8,46 +8,32 @@ const searchRequest = {
   location: 'san francisco, ca'
 };
 
-const ApiKey = ' N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
+const apiKey = ' N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
 const search = (cb) => {
-  jsonp(`https://api.yelp.com/v3/businesses/search`,
-  {
+
+  axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search`, {
     params: {
-          term:'Four Barrel Coffee',
-          location: 'san francisco, ca'
-        },
-          headers: {
-            Host: `api.yelp.com`,
-            Accept: '*/*',
-            Authorization: `Bearer ${ApiKey}`
-          }
-  }, (err, data) => {
-    console.log(data)
-    cb(data)
+      // term:'Four Barrel Coffee',
+      location: 'san francisco, ca'
+    },
+      headers: {
+        "accept": "application/json",
+        "x-requested-with": "xmlhttprequest",
+        "Access-Control-Allow-Origin":"*",
+        "Authorization": `Bearer ${apiKey}`
+      }
+
   })
-
-  // axios.get(`https://api.yelp.com/v3/businesses/search`, {
-  //   params: {
-  //     term:'Four Barrel Coffee',
-  //     location: 'san francisco, ca'
-  //   },
-  //     headers: {
-  //       Host: `api.yelp.com`,
-  //       Accept: '*/*',
-  //       Authorization: `Bearer ${ApiKey}`
-  //     }
-
-  // })
-  // .then(function (response) {
-  //   console.log('thennn')
-  //   console.log(response)
-  //   cb(JSON.stringify(response))
-  // })
-  // .catch(function (error) {
-  //   console.log('eerrrrrrrr')
-  //   console.log(error);
-  //   cb(JSON.stringify(error))
-  // })
+  .then((response) => {
+    console.log('thennn')
+    console.log(response)
+    cb(JSON.stringify(response))
+  })
+  .catch((error) => {
+    console.log('eerrrrrrrr')
+    console.log(error);
+    cb(JSON.stringify(error))
+  })
 
 
   // axios.create({
