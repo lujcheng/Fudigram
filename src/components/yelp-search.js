@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-// import jsonAdapter from 'axios-jsonp'
-// const search = require('../helpers/yelp-search')
+import yelpDes from '../helpers/yelp-destruct'
+
+
 
 const searchRequest = {
   term:'Four Barrel Coffee',
@@ -22,7 +23,9 @@ const search = (form, cb) => {
   })
   .then((response) => {
     console.log("this is the axios response", response)
-    cb(JSON.stringify(response.data))
+    let resData = yelpDes(response.data)
+    console.log(resData)
+    cb(JSON.stringify(resData))
   })
   .catch((error) => {
     console.log("this is axios erroR", error);
