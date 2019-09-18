@@ -24,7 +24,7 @@ const search = (cb) => {
   //     }
 
   // })
-  axios.get('/restaurants')
+  axios.post('/restaurants')
   .then((response) => {
     console.log('thennn')
     console.log("this is the axios response", response)
