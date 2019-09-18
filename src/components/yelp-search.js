@@ -9,8 +9,12 @@ const searchRequest = {
 };
 
 const apiKey = ' N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
-const search = (data, cb) => {
-
+const search = (form, cb) => {
+  let data = {
+    term: form.term.value,
+    location: form.location.value
+  }
+  console.log("this be data", data)
   // axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search`, {
   //   params: {
   //     // term:'Four Barrel Coffee',
@@ -28,12 +32,10 @@ const search = (data, cb) => {
     data: data
   })
   .then((response) => {
-    console.log('thennn')
     console.log("this is the axios response", response)
     cb(JSON.stringify(response.data))
   })
   .catch((error) => {
-    console.log('eerrrrrrrr')
     console.log("this is axios erroR", error);
     cb(JSON.stringify(error))
   })
