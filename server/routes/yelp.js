@@ -11,8 +11,8 @@ const searchRequest = {
 };
 
 router.route('/').post((req, res) => {
-  console.log(req.body.data)
-  client.search(searchRequest).then(response => {
+  let data = req.body.data
+  client.search(data).then(response => {
     const firstResult = response.jsonBody.businesses[0];
     const prettyJson = JSON.stringify(firstResult, null, 4);
     console.log("this is server search", prettyJson);
