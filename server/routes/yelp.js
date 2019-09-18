@@ -11,6 +11,7 @@ const searchRequest = {
 };
 
 router.route('/').post((req, res) => {
+  console.log(req.body)
   client.search(searchRequest).then(response => {
     const firstResult = response.jsonBody.businesses[0];
     const prettyJson = JSON.stringify(firstResult, null, 4);

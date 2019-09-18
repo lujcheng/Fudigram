@@ -9,7 +9,7 @@ const searchRequest = {
 };
 
 const apiKey = ' N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
-const search = (cb) => {
+const search = (term, location, cb) => {
 
   // axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search`, {
   //   params: {
@@ -24,7 +24,10 @@ const search = (cb) => {
   //     }
 
   // })
-  axios.post('/restaurants')
+  axios.post('/restaurants', {
+    term: term,
+    location: location
+  })
   .then((response) => {
     console.log('thennn')
     console.log("this is the axios response", response)
@@ -60,6 +63,8 @@ export default function YelpSearch() {
 
   const handleSubmit = e => {
     e.preventDefault()
+    let data = e.target
+    console.log(data)
     setNumber(number + 1)
     search(setResults)
   }
@@ -68,9 +73,12 @@ export default function YelpSearch() {
   return (
     <>
       <p>Search Term: {term}</p>
-      <form>
-        <input type='text' name='term' value={term} onChange={handleOnChange} onSubmit={handleSubmit} />
-        <button type='submit' onClick={handleSubmit}>submit</button>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='term'>Name</label>
+        <input type='text' name='term' value={term} onChange={handleOnChange} />
+        <label htmlFor='location'>Location</label>
+        <input type='text' name='location' defaultValue='' />
+        <button type='submit' >submit</button>
       </form>
       <p>Search results: {number}, {results} </p>
 
