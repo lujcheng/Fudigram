@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default function yelpDis(dataArr) {
   const display = dataArr.businesses.map(data => {
     return (

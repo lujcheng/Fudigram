@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import yelpDes from '../helpers/yelp-destruct'
+import yelpDis from '../helpers/yelp-display'
 
 
 
@@ -22,17 +23,29 @@ const search = (form, cb) => {
     data: data
   })
   .then((response) => {
-    console.log("this is the axios response", response)
     let resData = yelpDes(response.data)
-    console.log(response.data)
-    cb(JSON.stringify(resData))
+    console.log(" this is resData", resData)
+    cb(resData)
   })
   .catch((error) => {
     console.log("this is axios erroR", error);
-    cb(JSON.stringify(error))
+    cb({name: 'no results'})
   })
-
 }
+
+// async function createDisplay(data) {
+//   console.log('calling async')
+//   try {
+//     await search(data, setResults) 
+//   } catch(e) {
+//     console.log(e)
+//   }
+//   try {
+//     return await yelpDis(results)
+//   } catch(e) {
+//     console.log(e)
+//   }
+// }
 
 export default function YelpSearch() {
   const [term, setTerm] = useState('')
@@ -42,15 +55,20 @@ export default function YelpSearch() {
   const handleOnChange = e => {
     setTerm(e.target.value)
   }
+  
+ 
+  let display
 
   const handleSubmit = e => {
     e.preventDefault()
     let data = e.target
     console.log(data)
     setNumber(number + 1)
-    search(data, setResults)
+    async() => {
+      await search(data, setResults)
+      display = await yelpDis(results)
+    }
   }
-
 
   return (
     <>
@@ -62,8 +80,8 @@ export default function YelpSearch() {
         <input type='text' name='location' defaultValue='' />
         <button type='submit' >submit</button>
       </form>
-      <p>Search results: {number}, {results} </p>
-
+      <p>Search results: {number} </p>
+      {display}
     </>
   )
 }
