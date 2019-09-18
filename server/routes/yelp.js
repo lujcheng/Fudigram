@@ -14,8 +14,8 @@ router.route('/').post((req, res) => {
   let data = req.body.data
   console.log(data)
   client.search(data).then(response => {
-    const firstResult = response.jsonBody.businesses[0];
-    const prettyJson = JSON.stringify(firstResult, null, 4);
+    const results = response.jsonBody;
+    const prettyJson = JSON.stringify(results, null, 4);
     console.log("this is server search", prettyJson);
     res.send(prettyJson)
   }).catch(e => {

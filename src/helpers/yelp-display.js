@@ -1,4 +1,4 @@
-export default function yelpDes(dataArr) {
+export default function yelpDis(dataArr) {
   const display = dataArr.businesses.map(data => {
     return (
       <div id={data.id}>
@@ -11,15 +11,5 @@ export default function yelpDes(dataArr) {
       </div>
     )
   })
-  // for (let data of dataArr.businesses) {
-  //   display.push({
-  //     name: data.name,
-  //     url: data.url,
-  //     rating: data.rating,
-  //     coordinates: data.coordinates,
-  //     location: data.location,
-  //     phone: data.display_phone
-  //   })
-  // }
   return display
 }
