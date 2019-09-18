@@ -10,9 +10,12 @@ const searchRequest = {
 
 const apiKey = ' N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
 const search = (form, cb) => {
-  let data = {
-    term: form.term.value,
-    location: form.location.value
+  let data
+  if (form.term.value) {
+    data = { term: form.term.value }
+  }
+  if (form.location.value) {
+    data = {...data, location: form.location.value }
   }
   axios.post('/restaurants', {
     data: data
