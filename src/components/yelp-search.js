@@ -9,7 +9,7 @@ const searchRequest = {
 };
 
 const apiKey = ' N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
-const search = (term, location, cb) => {
+const search = (data, cb) => {
 
   // axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search`, {
   //   params: {
@@ -25,8 +25,7 @@ const search = (term, location, cb) => {
 
   // })
   axios.post('/restaurants', {
-    term: term,
-    location: location
+    data: data
   })
   .then((response) => {
     console.log('thennn')
@@ -66,7 +65,7 @@ export default function YelpSearch() {
     let data = e.target
     console.log(data)
     setNumber(number + 1)
-    search(setResults)
+    search(data, setResults)
   }
 
 
