@@ -14,20 +14,6 @@ const search = (form, cb) => {
     term: form.term.value,
     location: form.location.value
   }
-  console.log("this be data", data)
-  // axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search`, {
-  //   params: {
-  //     // term:'Four Barrel Coffee',
-  //     location: 'san francisco, ca'
-  //   },
-  //     headers: {
-  //       "accept": "application/json",
-  //       "x-requested-with": "xmlhttprequest",
-  //       "Access-Control-Allow-Origin":"*",
-  //       "Authorization": `Bearer ${apiKey}`
-  //     }
-
-  // })
   axios.post('/restaurants', {
     data: data
   })
@@ -40,17 +26,6 @@ const search = (form, cb) => {
     cb(JSON.stringify(error))
   })
 
-
-  // axios.create({
-  //   baseURL: 'https://api.yelp.com/v3/businesses/search',
-  //   transformRequest: [function (data, headers) {
-  //     headers['Authorization'] = auth()
-  //     return JSON.stringify(ApiKey)
-  //   }],
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   }
-  // })
 }
 
 export default function YelpSearch() {
