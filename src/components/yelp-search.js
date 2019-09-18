@@ -24,7 +24,7 @@ const search = (form, cb) => {
   .then((response) => {
     console.log("this is the axios response", response)
     let resData = yelpDes(response.data)
-    console.log(resData)
+    console.log(response.data)
     cb(JSON.stringify(resData))
   })
   .catch((error) => {
