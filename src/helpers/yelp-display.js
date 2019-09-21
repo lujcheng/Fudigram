@@ -11,6 +11,7 @@ export default function yelpDis(dataArr) {
       `
       return (
         <div key={data.id}>
+          <img src={`${data.image_url}`} />
           <p>Name: {data.name}</p>
           <p>Location: {address}</p>
           <p>Phone: {data.display_phone}</p>
