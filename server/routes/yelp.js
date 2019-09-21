@@ -2,14 +2,7 @@ const router = require('express').Router()
 const yelp = require('yelp-fusion');
 require("dotenv").config();
 
-const apiKey = 'N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx';
-
 const client = yelp.client(process.env.APIKEY);
-
-const searchRequest = {
-  term:'Four Barrel Coffee',
-  location: 'san francisco, ca'
-};
 
 router.route('/').post((req, res) => {
   let data = req.body.data
