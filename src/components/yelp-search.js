@@ -1,17 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import search from '../helpers/yelp-search'
 
-
-
-const searchRequest = {
-  term:'Four Barrel Coffee',
-  location: 'san francisco, ca'
-};
-
-const apiKey = ' N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx'
-
-
-
 export default function YelpSearch() {
   const [term, setTerm] = useState('')
   const [results, setResults] = useState([])
@@ -25,7 +14,7 @@ export default function YelpSearch() {
   const handleSubmit = (e) => {
     e.preventDefault()
     let data = e.target
-    search(data, setResults)
+    search(data, setResults, setNumber)
   }
   
   
