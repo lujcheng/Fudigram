@@ -16,9 +16,8 @@ const apiKey = ' N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRp
 
 export default function YelpSearch() {
   const [term, setTerm] = useState('')
-  const [results, setResults] = useState('')
+  const [results, setResults] = useState([])
   const [number, setNumber] = useState(0)
-  const [display, setDisplay] = useState([])
   
   const handleOnChange = e => {
     setTerm(e.target.value)
@@ -44,13 +43,8 @@ export default function YelpSearch() {
         let resData = yelpDes(response.data)
         console.log(" this is resData", resData)
         setNumber(number + 1)
-        setResults(resData)
-        return resData
-      })
-      .then((responseb)=> {
-        console.log("should have results:", results, number,responseb)
-        // display = yelpDis(results)
-        // console.log(display)
+        let display = yelpDis(resData)
+        setResults(display)
       })
       .catch((error) => {
         console.log("this is axios erroR", error);
@@ -60,11 +54,6 @@ export default function YelpSearch() {
     search(data, setResults)
   }
   
-  let display
-  useEffect(() => {
-    display = yelpDis(results)
-    console.log("displayy variable", display)
-  })
   
   return (
     <>
@@ -78,7 +67,7 @@ export default function YelpSearch() {
       </form>
       <p>Search results: {number} </p>
       <div>
-        {display}
+        {results}
       </div>
     </>
   )
