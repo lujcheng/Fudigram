@@ -39,15 +39,11 @@ export default function YelpSearch() {
         data: data
       })
       .then((response) => {
-        console.log("response data", response.data)
-        let resData = yelpDes(response.data)
-        console.log(" this is resData", resData)
-        setNumber(number + 1)
-        let display = yelpDis(resData)
-        setResults(display)
+        let display = yelpDis(response.data.businesses)
+        cb(display)
       })
       .catch((error) => {
-        console.log("this is axios erroR", error);
+        console.log("this is axios error", error);
         cb(<p> No Results </p>)
       })
     }

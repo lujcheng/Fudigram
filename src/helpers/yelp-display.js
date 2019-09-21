@@ -3,6 +3,7 @@ import React from 'react'
 export default function yelpDis(dataArr) {
   if (dataArr.length >= 1) {
     const display = dataArr.map(data => {
+      console.log(data.id)
       let address = 
       `
       ${data.location.display_address[0]},
