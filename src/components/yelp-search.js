@@ -48,7 +48,7 @@ export default function YelpSearch() {
       })
       .catch((error) => {
         console.log("this is axios erroR", error);
-        cb({name: 'no results'})
+        cb(<p> No Results </p>)
       })
     }
     search(data, setResults)
