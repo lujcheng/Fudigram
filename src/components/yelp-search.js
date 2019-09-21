@@ -18,19 +18,17 @@ export default function YelpSearch() {
   const [term, setTerm] = useState('')
   const [results, setResults] = useState('')
   const [number, setNumber] = useState(0)
+  const [display, setDisplay] = useState([])
   
   const handleOnChange = e => {
     setTerm(e.target.value)
   }
   
-  let display
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    e.persist()
     let data = e.target
-    setNumber(number + 1)
-    const search = async (form, cb) => {
+    const search = (form, cb) => {
       let data
       if (form.term.value) {
         data = { term: form.term.value }
@@ -45,11 +43,14 @@ export default function YelpSearch() {
         console.log("response data", response.data)
         let resData = yelpDes(response.data)
         console.log(" this is resData", resData)
-        cb({businesses: resData})
-        console.log("success")
+        setNumber(number + 1)
+        setResults(resData)
+        return resData
       })
-      .then(()=> {
-        console.log(results)
+      .then((responseb)=> {
+        console.log("should have results:", results, number,responseb)
+        // display = yelpDis(results)
+        // console.log(display)
       })
       .catch((error) => {
         console.log("this is axios erroR", error);
@@ -57,10 +58,14 @@ export default function YelpSearch() {
       })
     }
     search(data, setResults)
-
-
   }
-
+  
+  let display
+  useEffect(() => {
+    display = yelpDis(results)
+    console.log("displayy variable", display)
+  })
+  
   return (
     <>
       <p>Search Term: {term}</p>
@@ -72,7 +77,9 @@ export default function YelpSearch() {
         <button type='submit' >submit</button>
       </form>
       <p>Search results: {number} </p>
-      {display}
+      <div>
+        {display}
+      </div>
     </>
   )
 }
