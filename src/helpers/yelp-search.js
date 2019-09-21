@@ -1,29 +1,24 @@
-'use strict';
+import React from 'react'
+import axios from 'axios'
+import yelpDis from '../helpers/yelp-display'
 
-const yelp = require('yelp-fusion');
-
-// Place holder for Yelp Fusion's API Key. Grab them
-// from https://www.yelp.com/developers/v3/manage_app
-const apiKey = 'N-Uh_UVLvOVpyG4J0wzQvIsTP6ItKoJnS3aHJ69Q2QxDyvdbm9RB2zG1MpRNaRpw0wmmNjPw2F7nmM4cGlXpWlMfipJKd2XKJn29oOaxAgXpeLLimeSFTjFrNu5eXXYx';
-
-const searchRequest = {
-  term:'Four Barrel Coffee',
-  location: 'san francisco, ca'
-};
-
-const client = yelp.client(apiKey);
-
-function apiSearch(searchRequest) {
-  client.search(searchRequest).then(response => {
-    const firstResult = response.jsonBody.businesses[0];
-    const prettyJson = JSON.stringify(firstResult, null, 4);
-    console.log(prettyJson);
-    return prettyJson
-  }).catch(e => {
-    console.log(e);
-    return e
-  });
-
+export default function search (form, cb) {
+  let data
+  if (form.term.value) {
+    data = { term: form.term.value }
+  }
+  if (form.location.value) {
+    data = {...data, location: form.location.value }
+  }
+  axios.post('/restaurants', {
+    data: data
+  })
+  .then((response) => {
+    let display = yelpDis(response.data.businesses)
+    cb(display)
+  })
+  .catch((error) => {
+    console.log("this is axios error", error);
+    cb(<p> No Results </p>)
+  })
 }
-apiSearch(searchRequest)
-

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import yelpDes from '../helpers/yelp-destruct'
-import yelpDis from '../helpers/yelp-display'
+import search from '../helpers/yelp-search'
 
 
 
@@ -27,26 +25,6 @@ export default function YelpSearch() {
   const handleSubmit = (e) => {
     e.preventDefault()
     let data = e.target
-    const search = (form, cb) => {
-      let data
-      if (form.term.value) {
-        data = { term: form.term.value }
-      }
-      if (form.location.value) {
-        data = {...data, location: form.location.value }
-      }
-      axios.post('/restaurants', {
-        data: data
-      })
-      .then((response) => {
-        let display = yelpDis(response.data.businesses)
-        cb(display)
-      })
-      .catch((error) => {
-        console.log("this is axios error", error);
-        cb(<p> No Results </p>)
-      })
-    }
     search(data, setResults)
   }
   
