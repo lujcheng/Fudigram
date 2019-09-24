@@ -1,9 +1,10 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import Login from '../../components/loginput'
 
 function Users() {
   return (
-    <p>users for now</p>
+    <Login />
   )
 }
 
