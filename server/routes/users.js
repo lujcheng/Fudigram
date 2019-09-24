@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {models, connectDb} = require('../../src/models')
+const {models, connectDb} = require('../models')
 
 const path = require('path')
 const DIST_DIR = path.join(__dirname, '../../dist')
