@@ -4,7 +4,10 @@ import Login from '../../components/loginput'
 
 function Users() {
   return (
-    <Login />
+    <>
+      <p>this is user page</p>
+      <Login />
+    </>
   )
 }
 
