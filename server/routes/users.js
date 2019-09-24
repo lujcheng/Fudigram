@@ -12,21 +12,12 @@ router.route('/').get((req, res) => {
 
 router.route('/').post((req, res) => {
   console.log("new user: ", req.body)
-  let person
-    connectDb().then(async () => {
-      person = await models.User.findByLogin(`${req.body.userName}`)
-      console.log(person)
-      res.send(person)
-      // await Promise.all([
-      //   user = models.User.find({ username: req.body.userName }),
-      //   console.log(user),
-      //   res.send(user)
-      // ]);
-      app.listen(process.env.PORT, () =>
-        console.log(`Example app listening on port ${process.env.PORT}!`),
-      );
-    });
-  
+  const userQuery = async () => {
+    let person = await models.User.findByLogin(`${req.body.userName}`)
+    console.log(person)
+    res.send(person)
+  } 
+  userQuery()
 })
 
 module.exports = router;
