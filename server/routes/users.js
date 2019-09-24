@@ -13,9 +13,14 @@ router.route('/').get((req, res) => {
 router.route('/').post((req, res) => {
   console.log("new user: ", req.body)
   const userQuery = async () => {
-    let person = await models.User.findByLogin(`${req.body.userName}`)
-    console.log(person)
-    res.send(person)
+    let person
+    try {
+      person = await models.User.findByLogin(`${req.body.userName}`)
+      console.log(person)
+      res.send(person)
+    } catch (err) {
+      console.log(err)
+    }
   } 
   userQuery()
 })

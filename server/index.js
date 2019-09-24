@@ -34,8 +34,3 @@ app.use('/users', userRouter)
 
 const searchRouter = require('./routes/yelp')
 app.use('/restaurants', searchRouter)
-
-
-// app.listen(PORT, () => {
-//   console.log(`Listening on port ${PORT}`)
-// })
