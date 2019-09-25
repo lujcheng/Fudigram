@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function UserInput() {
+export default function UserInput(path) {
   const [term, setTerm] = useState('')
   const [results, setResults] = useState(0)
 
@@ -17,7 +17,7 @@ export default function UserInput() {
 return (
   <>
     <p>Search Term: {term}</p>
-    <form action='/registration' method='post'>
+    <form action={path} method='post'>
       User Name:
       <input type='text' name='userName' onChange={handleOnChange} />
       <input type='submit' value='Submit'/>
