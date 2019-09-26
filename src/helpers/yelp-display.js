@@ -22,6 +22,5 @@ export default function yelpDis(dataArr) {
       )
     })
     return display
-
   }
 }
