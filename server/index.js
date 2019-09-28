@@ -7,7 +7,6 @@ const path = require('path')
 
 require("dotenv").config();
 
-const PORT = 3000
 const DIST_DIR = path.join(__dirname, '../dist')
 const HTML_FILE = path.join(DIST_DIR, 'index.html')
 
