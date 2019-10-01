@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models, connectDb } = require('../models')
+const { models } = require('../models')
 
 
 const path = require('path')
