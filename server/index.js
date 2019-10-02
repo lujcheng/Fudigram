@@ -14,6 +14,8 @@ const { connectDb } = require('./models')
 
 app.use(express.static(DIST_DIR))
 
+let PORT = 8081
+
 app.get('/', function (req, res) {
   res.sendFile(HTML_FILE)
 })
@@ -28,7 +30,7 @@ const searchRouter = require('./routes/yelp')
 app.use('/restaurants', searchRouter)
 
 connectDb().then(async () => {
-  app.listen(process.env.PORT, () =>
-    console.log(`Example app listening on port ${process.env.PORT}!`),
+  app.listen(PORT, () =>
+    console.log(`Example app listening on port ${PORT}!`),
   );
 });
