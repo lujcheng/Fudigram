@@ -10,7 +10,7 @@ require("dotenv").config();
 const DIST_DIR = path.join(__dirname, '../dist')
 const HTML_FILE = path.join(DIST_DIR, 'index.html')
 
-const { connectDb } = require('./models')
+// const { connectDb } = require('./models')
 
 app.use(express.static(DIST_DIR))
 
@@ -29,8 +29,8 @@ app.use('/users', userRouter)
 const searchRouter = require('./routes/yelp')
 app.use('/restaurants', searchRouter)
 
-connectDb().then(async () => {
+// connectDb().then(async () => {
   app.listen(PORT, () =>
     console.log(`Example app listening on port ${PORT}!`),
   );
-});
+// });
